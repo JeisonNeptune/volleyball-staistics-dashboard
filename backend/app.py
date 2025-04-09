@@ -38,3 +38,9 @@ def get_stat_data(name):
         return jsonify({'error': 'File not found'}), 404
 if __name__ == '__main__':
     app.run(debug=True)
+
+    # .\env\Scripts\activate
+    # python app.py
+
+
+    #npm start
