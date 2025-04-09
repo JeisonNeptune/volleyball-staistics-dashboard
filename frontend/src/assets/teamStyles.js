@@ -1,52 +1,52 @@
 const teamStyles = {
     "UCLA": {
       color: "#2774AE",
-      logo: "https://content.sportslogos.net/logos/30/762/full/ucla_bruins_logo.png"
+      logo: "/team_logos/ucla.png"
     },
     "Penn St.": {
       color: "#162952",
-      logo: "https://content.sportslogos.net/logos/30/779/full/penn_state_nittany_lions_logo.png"
+      logo: "/team_logos/penn.png"
     },
     "Stanford": {
       color: "#8C1515",
-      logo: "https://content.sportslogos.net/logos/30/772/full/stanford_cardinal_logo.png"
+      logo: "/team_logos/stanford.png"
     },
     "BYU": {
       color: "#002E5D",
-      logo: "https://content.sportslogos.net/logos/30/769/full/byu_cougars_logo.png"
+      logo: "/team_logos/byu.png"
     },
     "Ohio St.": {
       color: "#BB0000",
-      logo: "https://content.sportslogos.net/logos/30/775/full/ohio_state_buckeyes_logo.png"
+      logo: "/team_logos/ohio-state.png"
     },
     "Hawaii": {
       color: "#024731",
-      logo: "https://content.sportslogos.net/logos/30/770/full/hawaii_warriors_logo.png"
+      logo: "/team_logos/hawaii.png"
     },
     "UC Santa Barbara": {
       color: "#00539B",
-      logo: "https://content.sportslogos.net/logos/30/774/full/uc_santa_barbara_gauchos_logo.png"
+      logo: "/team_logos/ucsb.png"
     },
     "Pepperdine": {
       color: "#00205B",
-      logo: "https://content.sportslogos.net/logos/30/784/full/pepperdine_waves_logo.png"
+      logo: "/team_logos/pepperdine.png"
     },
     "George Mason": {
       color: "#006633",
-      logo: "https://content.sportslogos.net/logos/30/786/full/george_mason_patriots_logo.png"
+      logo: "/team_logos/gm.png"
     },
     "Princeton": {
       color: "#FF8F00",
-      logo: "https://content.sportslogos.net/logos/30/785/full/princeton_tigers_logo.png"
+      logo: "/team_logos/princeton.png"
     },
   
   "Ball St.": {
     color: "#A6192E",
-    logo: "https://content.sportslogos.net/logos/30/780/full/ball_state_cardinals_logo.png"
+    logo: "/team_logos/ball.png"
   },
   "Loyola Chicago": {
     color: "#800000",
-    logo: "https://content.sportslogos.net/logos/30/782/full/loyola_chicago_ramblers_logo.png"
+    logo: "/team_logos/loyola.png"
   },
   "Lewis": {
     color: "#CE1126",
@@ -66,20 +66,53 @@ const teamStyles = {
   },
   "Harvard": {
     color: "#A51C30",
-    logo: "https://content.sportslogos.net/logos/30/773/full/harvard_crimson_logo.png"
+    logo: "/team_logos/harvard.png"
   },
   "UC Irvine": {
     color: "#0064A4",
-    logo: "https://content.sportslogos.net/logos/30/776/full/uc_irvine_anteaters_logo.png"
+    logo: "/team_logos/uc-irvine.png"
   },
   "Long Beach St.": {
     color: "#000000",
-    logo: "https://content.sportslogos.net/logos/30/771/full/long_beach_state_49ers_logo.png"
+    logo: "/team_logos/long beach.png"
   },
   "CSUN": {
     color: "#C8102E",
-    logo: "https://content.sportslogos.net/logos/30/778/full/csun_matadors_logo.png"
-  }
+    logo: "/team_logos/csun.png"
+  },
+  "UC Irvine": {
+  color: "#0064A4",
+  logo: "/team_logos/uci.png"
+},
+"Grand Canyon": {
+  color: "#582C83",
+  logo: "/team_logos/gcu.png"
+},
+"Lewis": {
+  color: "#CE1126",
+  logo: "/team_logos/lewis.png"
+},
+"UC San Diego": {
+  color: "#182B49",
+  logo: "/team_logos/ucsd.png"
+},
+"LIU": {
+  color: "#0077C8",
+  logo: "/team_logos/liu.png"
+},
+"USC": {
+  color: "#990000",
+  logo: "/team_logos/usc.png"
+},
+"McKendree": {
+  color: "#4B2E83",
+  logo: "/team_logos/mckendree.png"
+},
+"Barton": {
+  color: "#002D72",
+  logo: "/team_logos/barton.png"
+}
+
 
 };
   export default teamStyles;

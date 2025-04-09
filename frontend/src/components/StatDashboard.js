@@ -160,19 +160,21 @@ const StatDashboard = () => {
                     {Object.entries(row).map(([key, val], i) => (
                       <td key={i} className="border px-4 py-2">
                         {key === "Team" ? (
-                          <div className="flex items-center gap-2">
-                            {style.logo && (
-                              <img
-                                src={style.logo}
-                                alt={`${team} logo`}
-                                className="w-6 h-6"
-                              />
-                            )}
-                            <span>{val}</span>
-                          </div>
-                        ) : (
-                          val
-                        )}
+  <div className="flex items-center gap-2">
+    {style.logo && (
+      <img
+      src={style.logo}
+      alt={`${team} logo`}
+      className="w-6 h-6 object-contain"
+      style={{ maxWidth: '30px', maxHeight: '24px', paddingRight: '4px' }}
+      onError={(e) => (e.target.style.display = 'none')}
+    />
+    
+    )}
+    <span>{val}</span>
+  </div>
+) : val}
+
                       </td>
                     ))}
                   </tr>
