@@ -1,0 +1,33 @@
+name: Weekly Scraper
+
+on:
+  schedule:
+    - cron: '0 10 * * 1'  # Every Monday at 10am UTC
+  workflow_dispatch:
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas requests beautifulsoup4
+
+      - name: Run Scraper
+        run: python backend/vbStateScrape.py
+
+      - name: Commit & Push
+        run: |
+          git config --global user.name "volley-bot"
+          git config --global user.email "actions@github.com"
+          git add backend/data/*.csv
+          git commit -m "🤖 Weekly data refresh"
+          git push
+        continue-on-error: true
