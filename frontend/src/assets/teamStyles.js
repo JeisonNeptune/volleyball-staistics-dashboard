@@ -100,7 +100,7 @@ const teamStyles = {
   color: "#0077C8",
   logo: "/team_logos/liu.png"
 },
-"USC": {
+"Southern California": {
   color: "#990000",
   logo: "/team_logos/usc.png"
 },

@@ -13,17 +13,15 @@ import {
 } from "recharts";
 import teamStyles from "../assets/teamStyles";
 
-
 function getContrastText(hexColor) {
-    const c = hexColor.substring(1); // remove #
-    const rgb = parseInt(c, 16); // convert rrggbb to decimal
-    const r = (rgb >> 16) & 0xff;
-    const g = (rgb >> 8) & 0xff;
-    const b = rgb & 0xff;
-    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-    return brightness > 150 ? '#000000' : '#ffffff';
-  }
-  
+  const c = hexColor.substring(1); // remove #
+  const rgb = parseInt(c, 16); // convert rrggbb to decimal
+  const r = (rgb >> 16) & 0xff;
+  const g = (rgb >> 8) & 0xff;
+  const b = rgb & 0xff;
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness > 150 ? "#000000" : "#ffffff";
+}
 
 const getBarColor = (teamName) => {
   const style = teamStyles[teamName];
@@ -37,6 +35,7 @@ const StatDashboard = () => {
   const [statData, setStatData] = useState([]);
   const [topCount, setTopCount] = useState(10);
   const [valueKey, setValueKey] = useState("Per Set");
+  const [availableColumns, setAvailableColumns] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:5000/api/stats").then((res) => {
@@ -51,7 +50,14 @@ const StatDashboard = () => {
         .get(`http://localhost:5000/api/stat/${selectedStat}`)
         .then((res) => {
           setOriginalData(res.data.data);
-          setValueKey(res.data.value_column); // this comes from backend
+
+          const firstRow = res.data.data[0];
+          const keys = Object.keys(firstRow).filter(
+            (k) => k !== "Team" && k !== "Rank"
+          );
+          setAvailableColumns(keys); // dynamically get available stat columns
+
+          setValueKey(res.data.value_column); // default one from backend
         });
     }
   }, [selectedStat]);
@@ -94,6 +100,18 @@ const StatDashboard = () => {
           <option value={0}>Show All</option>
         </select>
       </div>
+      {/* Y-Axis Stat Selector (this is Option 3!) */}
+      <select
+        className="p-2 border rounded w-full sm:w-1/3"
+        value={valueKey}
+        onChange={(e) => setValueKey(e.target.value)}
+      >
+        {availableColumns.map((col) => (
+          <option key={col} value={col}>
+            {col.replace(/_/g, " ")}
+          </option>
+        ))}
+      </select>
 
       {/* Responsive Chart */}
       {statData.length > 0 && (
@@ -160,21 +178,27 @@ const StatDashboard = () => {
                     {Object.entries(row).map(([key, val], i) => (
                       <td key={i} className="border px-4 py-2">
                         {key === "Team" ? (
-  <div className="flex items-center gap-2">
-    {style.logo && (
-      <img
-      src={style.logo}
-      alt={`${team} logo`}
-      className="w-6 h-6 object-contain"
-      style={{ maxWidth: '30px', maxHeight: '24px', paddingRight: '4px' }}
-      onError={(e) => (e.target.style.display = 'none')}
-    />
-    
-    )}
-    <span>{val}</span>
-  </div>
-) : val}
-
+                          <div className="flex items-center gap-2">
+                            {style.logo && (
+                              <img
+                                src={style.logo}
+                                alt={`${team} logo`}
+                                className="w-6 h-6 object-contain"
+                                style={{
+                                  maxWidth: "30px",
+                                  maxHeight: "24px",
+                                  paddingRight: "4px",
+                                }}
+                                onError={(e) =>
+                                  (e.target.style.display = "none")
+                                }
+                              />
+                            )}
+                            <span>{val}</span>
+                          </div>
+                        ) : (
+                          val
+                        )}
                       </td>
                     ))}
                   </tr>
